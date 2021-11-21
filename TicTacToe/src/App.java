@@ -1,5 +1,6 @@
 import java.io.*;
 import java.net.*;
+import java.util.*;
 class newtworking{
     public ServerSocket server;
     public DataInputStream inputStream;
@@ -28,6 +29,8 @@ class game{
     game(String p1) throws Exception{
         this.p1 = p1;
         this.p2 = new newtworking().inputStream.readUTF();
+        new newtworking().outputStream.writeUTF(this.p1);
+        new newtworking().outputStream.flush();
 
     }
     public void run(){
