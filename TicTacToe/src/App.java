@@ -1,14 +1,13 @@
 import java.io.*;
 import java.net.*;
 import java.util.*;
-class newtworking{
+class networking{
     public ServerSocket server;
-    public DataInputStream inputStream;
-    public DataOutputStream outputStream;
+    DataInputStream inputStream;
+    DataOutputStream outputStream;
     public void start(int port) throws Exception {
-        server = new ServerSocket(port);
-        server.setSoTimeout(60000);
         try{
+            server = new ServerSocket(port);
             Socket socket = server.accept();
             if(socket.isConnected()) {
                 System.out.println("Connected");
@@ -27,23 +26,25 @@ class game{
     public String p1;
     public String p2;
     game(String p1) throws Exception{
+        networking net = new networking();
+        net.start(8008);
         this.p1 = p1;
-        this.p2 = new newtworking().inputStream.readUTF();
-        new newtworking().outputStream.writeUTF(this.p1);
-        new newtworking().outputStream.flush();
+        this.p2 = net.inputStream.readUTF();
+        net.outputStream.writeUTF(this.p1);
+        net.outputStream.flush();
 
     }
     public void run(){
-
+        System.out.println("Player 1: " + p1+"-->You");
+        System.out.println("Player 2: " + p2);
     }
 }
 public class App {
    
    
     public static void main(String[] args) throws Exception {
-        newtworking net = new newtworking();
-        net.start(8008);
-        game game = new game("p1");
+        networking net = new networking();
+        game game = new game("aayush");
         game.run();
 
     }
