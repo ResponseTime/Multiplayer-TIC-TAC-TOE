@@ -1,11 +1,9 @@
 import java.io.*;
 import java.net.*;
 class newtworking{
-    public static ServerSocket server;
-    public static DataInputStream inputStream;
-    public static DataOutputStream outputStream;
-    
-
+    public ServerSocket server;
+    public DataInputStream inputStream;
+    public DataOutputStream outputStream;
     public void start(int port) throws Exception {
         server = new ServerSocket(port);
         server.setSoTimeout(60000);
@@ -26,11 +24,14 @@ class newtworking{
 
 class game{
     public String p1;
-    game(String p1,String p2){
+    public String p2;
+    game(String p1) throws Exception{
         this.p1 = p1;
+        this.p2 = new newtworking().inputStream.readUTF();
+
     }
     public void run(){
-        
+
     }
 }
 public class App {
@@ -39,7 +40,7 @@ public class App {
     public static void main(String[] args) throws Exception {
         newtworking net = new newtworking();
         net.start(8008);
-        game game = new game("p1","p2");
+        game game = new game("p1");
         game.run();
 
     }
