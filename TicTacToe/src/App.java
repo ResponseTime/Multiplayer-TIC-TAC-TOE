@@ -8,19 +8,22 @@ public class App {
 
     public static void start(int port) throws Exception {
         server = new ServerSocket(port);
-        server.setSoTimeout(600000);
-        Socket socket = server.accept();
-        if(socket.isConnected()) {
-            System.out.println("Connected");
-            inputStream = new DataInputStream(socket.getInputStream());
-            outputStream = new DataOutputStream(socket.getOutputStream());
+        server.setSoTimeout(60000);
+        try{
+            Socket socket = server.accept();
+            if(socket.isConnected()) {
+                System.out.println("Connected");
+                inputStream = new DataInputStream(socket.getInputStream());
+                outputStream = new DataOutputStream(socket.getOutputStream());
+            }
         }
-        else{
+        catch(Exception e){
             System.out.println("Failed to connect");
         }
+       
     }
 
     public static void main(String[] args) throws Exception {
-
+        start(8000);
     }
 }
