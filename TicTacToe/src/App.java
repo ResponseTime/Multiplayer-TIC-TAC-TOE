@@ -1,12 +1,12 @@
 import java.io.*;
 import java.net.*;
-
-public class App {
+class newtworking{
     public static ServerSocket server;
     public static DataInputStream inputStream;
     public static DataOutputStream outputStream;
+    
 
-    public static void start(int port) throws Exception {
+    public void start(int port) throws Exception {
         server = new ServerSocket(port);
         server.setSoTimeout(60000);
         try{
@@ -22,8 +22,25 @@ public class App {
         }
        
     }
+}
 
+class game{
+    public String p1;
+    game(String p1,String p2){
+        this.p1 = p1;
+    }
+    public void run(){
+        
+    }
+}
+public class App {
+   
+   
     public static void main(String[] args) throws Exception {
-        start(8000);
+        newtworking net = new newtworking();
+        net.start(8008);
+        game game = new game("p1","p2");
+        game.run();
+
     }
 }
