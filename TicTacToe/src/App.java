@@ -34,7 +34,7 @@ class game{
         net.outputStream.flush();
 
     }
-    public void run(){
+    public void run() throws Exception{
         System.out.println("Player 1: " + p1+"-->You");
         System.out.println("Player 2: " + p2);
         System.out.println("Press any button to continue");
