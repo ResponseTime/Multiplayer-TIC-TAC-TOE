@@ -36,7 +36,14 @@ class game {
         net.outputStream.flush();
 
     }
-
+    public void displayBoard(int gameBoard[][]) throws Exception {
+        for (int i = 0; i < gameBoard.length; i++) {
+            for (int j = 0; j < gameBoard.length; j++) {
+                System.out.printf(" %d ", gameBoard[i][j]);
+            }
+            System.out.println();
+        }
+    }
     public void run() throws Exception {
         System.out.println("Player 1: " + p1 + "-->You");
         System.out.println("Player 2: " + p2);
@@ -46,12 +53,7 @@ class game {
         int gameBoard[][] = { { 0, 0, 0 },
                             { 0, 0, 0 },
                             { 0, 0, 0 } };
-        for (int i = 0; i < gameBoard.length; i++) {
-            for (int j = 0; j < gameBoard.length; j++) {
-                System.out.printf(" %d ", gameBoard[i][j]);
-            }
-            System.out.println();
-        }
+        displayBoard(gameBoard);
 
     }
 }
